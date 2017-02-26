@@ -22,7 +22,7 @@ public final class ImagesApi {
 
     public static List<String> findUrls(String page) {
         Matcher matcher = URL_PATTERN.matcher(page);
-        ArrayList<String> list = new ArrayList<>();
+        ArrayList<String> list = new ArrayList<String>();
         while (matcher.find()) list.add(matcher.group(1));
         return list;
     }

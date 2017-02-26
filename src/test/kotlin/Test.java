@@ -19,7 +19,7 @@ public class Test {
         OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder()
-//                .url("https://www.google.com.br/search?tbm=isch&biw=800&bih=600&q=emo%20girl")
+//                .url("")
                 .url(url)
                 .get()
                 .addHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36")
@@ -46,7 +46,7 @@ public class Test {
 
     private static String read(InputStream inputStream) throws IOException {
         StringBuilder builder = new StringBuilder();
-        int c = -1;
+        int c;
         while ((c = inputStream.read()) != -1)
             builder.append((char) c);
         return builder.toString();
