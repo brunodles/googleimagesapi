@@ -3,23 +3,21 @@ buildscript {
     ext.kotlin_ver = '1.0.6'
 
     repositories {
-        mavenCentral()
         jcenter()
+        maven { url "https://plugins.gradle.org/m2/" }
     }
 
     dependencies {
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_ver"
     }
 }
 
-group 'com.github.brunodles'
-version '0.1'
-
 apply plugin: 'java'
 apply plugin: "kotlin"
 
-sourceCompatibility = 1.5
-
+sourceCompatibility = 1.6
+targetCompatibility = 1.6
 
 repositories {
     mavenLocal()
@@ -40,3 +38,21 @@ dependencies {
     testCompile 'com.mscharhag.oleaster:oleaster-runner:0.1.2'
     testCompile 'com.github.brunodles:OleasterSuiteRunner:0.1'
 }
+
+ext.scripter = [
+        'gradle/scripter.gradle' : 'https://raw.githubusercontent.com/brunodles/GradleHelpers/master/scripter/scripter.gradle',
+        'gradle/publish.gradle' : 'https://raw.githubusercontent.com/brunodles/GradleHelpers/master/publish/multiple.gradle'
+]
+apply from: rootProject.file("gradle/scripter.gradle")
+
+ext.maven = [
+        group   : "com.brunodles",
+        version : '1.0.0',
+        repo    : "TempRepo",
+        name    : "Google Images Api",
+        artifact: "googleimagesapi",
+        site    : "https://github.com/brunodles/googleimagesapi",
+        git     : "https://github.com/brunodles/googleimagesapi.git",
+        tag     : 'git rev-parse --abbrev-ref HEAD'.execute().text.trim()
+]
+apply from: rootProject.file("gradle/publish.gradle")
