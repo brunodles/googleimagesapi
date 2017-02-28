@@ -3,6 +3,10 @@ language: java
 jdk:
   - oraclejdk8
 
+branches:
+  only:
+    - master
+
 env:
   global:
     - JAVA7_HOME=/usr/lib/jvm/java-8-oracle
@@ -19,6 +23,7 @@ deploy:
   script: ./gradlew bintrayUpload
   on:
     branch: master
+    tags: true
 
 notifications:
   email: false
