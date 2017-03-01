@@ -20,7 +20,7 @@ script: ./gradlew test --info
 deploy:
   skip_cleanup: true
   provider: script
-  script: ./gradlew bintrayUpload
+  script: ./gradlew install bintrayUpload
   on:
     branch: master
     tags: true

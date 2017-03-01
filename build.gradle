@@ -22,6 +22,7 @@ targetCompatibility = 1.6
 repositories {
     mavenLocal()
     mavenCentral()
+    maven { url "https://dl.bintray.com/brunodles/releases/" }
 }
 
 dependencies {
@@ -36,11 +37,11 @@ dependencies {
 
     testCompile 'com.mscharhag.oleaster:oleaster-matcher:0.1.2'
     testCompile 'com.mscharhag.oleaster:oleaster-runner:0.1.2'
-    testCompile 'com.github.brunodles:OleasterSuiteRunner:0.1'
+    testCompile 'com.brunodles:OleasterSuiteRunner:0.1.1'
 }
 
 ext.scripter = [
-        'gradle/scripter.gradle' : 'https://raw.githubusercontent.com/brunodles/GradleHelpers/master/scripter/scripter.gradle',
+        'gradle/scripter.gradle': 'https://raw.githubusercontent.com/brunodles/GradleHelpers/master/scripter/scripter.gradle',
         'gradle/publish.gradle' : 'https://raw.githubusercontent.com/brunodles/GradleHelpers/master/publish/multiple.gradle'
 ]
 apply from: rootProject.file("gradle/scripter.gradle")
