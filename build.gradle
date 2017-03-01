@@ -37,7 +37,7 @@ dependencies {
 
     testCompile 'com.mscharhag.oleaster:oleaster-matcher:0.1.2'
     testCompile 'com.mscharhag.oleaster:oleaster-runner:0.1.2'
-    testCompile 'com.brunodles:OleasterSuiteRunner:0.1.1'
+    testCompile 'com.brunodles:oleaster-suiterunner:0.1.1'
 }
 
 ext.scripter = [
