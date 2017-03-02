@@ -1,8 +1,5 @@
-package com.github.brunodles.googleimagesapi;
+package com.brunodles.googleimagesapi;
 
-/**
- * Created by bruno on 24/06/16.
- */
 public interface QueryBuilder {
 
     QueryBuilder size(int width, int height);

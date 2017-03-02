@@ -1,13 +1,11 @@
-package com.github.brunodles.googleimagesapi
+package com.brunodles.googleimagesapi
 
-import com.github.brunodles.oleaster_suite_runner.OleasterSuiteRunner
+import ResourceHelper
+import com.brunodles.oleaster.suiterunner.OleasterSuiteRunner
 import com.mscharhag.oleaster.matcher.Matchers.expect
 import com.mscharhag.oleaster.runner.StaticRunnerSupport.*
 import org.junit.runner.RunWith
 
-/**
- * Created by bruno on 24/06/16.
- */
 @RunWith(OleasterSuiteRunner::class)
 class ImagesApiTest {
 
@@ -24,8 +22,8 @@ class ImagesApiTest {
                 describe("when the page have nine images") {
                     beforeEach { urls = ImagesApi.findUrls(ResourceHelper.getFileAsString("page_with_nine")) }
                     it("should have size equals to 9") { expect(urls!!.size).toEqual(9) }
-                        it("should return a images urls") {
-                            for (i in PAGE_WITH_NINE_RESULT.indices) {
+                    it("should return a images urls") {
+                        for (i in PAGE_WITH_NINE_RESULT.indices) {
                             expect(urls!![i]).toEqual(PAGE_WITH_NINE_RESULT[i])
                         }
                     }

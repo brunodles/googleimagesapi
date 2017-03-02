@@ -20,9 +20,8 @@ sourceCompatibility = 1.6
 targetCompatibility = 1.6
 
 repositories {
-    mavenLocal()
+    jcenter()
     mavenCentral()
-    maven { url "https://dl.bintray.com/brunodles/releases/" }
 }
 
 dependencies {

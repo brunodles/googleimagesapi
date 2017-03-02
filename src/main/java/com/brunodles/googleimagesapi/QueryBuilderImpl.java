@@ -1,11 +1,8 @@
-package com.github.brunodles.googleimagesapi;
+package com.brunodles.googleimagesapi;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
-/**
- * Created by bruno on 24/06/16.
- */
 class QueryBuilderImpl implements QueryBuilder {
 
     private static final String BASE_URL = "https://www.google.com.br/search?tbm=isch";

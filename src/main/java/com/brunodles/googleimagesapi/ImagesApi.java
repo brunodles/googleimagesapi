@@ -1,4 +1,4 @@
-package com.github.brunodles.googleimagesapi;
+package com.brunodles.googleimagesapi;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,9 +6,6 @@ import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Created by bruno on 24/06/16.
- */
 public final class ImagesApi {
 
     private static final Pattern URL_PATTERN = Pattern.compile("\"ou\":\"(https?:.+?)\"");
@@ -27,7 +24,7 @@ public final class ImagesApi {
         return list;
     }
 
-    public static String random(String page){
+    public static String random(String page) {
         List<String> urls = findUrls(page);
         int i = new Random().nextInt(urls.size());
         return urls.get(i);
