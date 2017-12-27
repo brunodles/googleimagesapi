@@ -13,14 +13,14 @@ class ImagesApiTest {
 
     init {
         describe("Given a ImageApi") {
-            describe(".findUrls") {
+            describe(".findUrlsOnPage") {
                 describe("when the page have one image") {
-                    beforeEach { urls = ImagesApi.findUrls(ResourceHelper.getFileAsString("page_with_one")) }
+                    beforeEach { urls = ImagesApi.findUrlsOnPage(ResourceHelper.getFileAsString("page_with_one")) }
                     it("should have size equals to 1") { expect(urls!!.size).toEqual(1) }
                     it("should return a image url") { expect(urls!![0]).toEqual("http://data.whicdn.com/images/10344805/black-hair-emo-emo-girl-girl-julie-elizabeth-long-hair-Favim.com-58218_large.jpg") }
                 }
                 describe("when the page have nine images") {
-                    beforeEach { urls = ImagesApi.findUrls(ResourceHelper.getFileAsString("page_with_nine")) }
+                    beforeEach { urls = ImagesApi.findUrlsOnPage(ResourceHelper.getFileAsString("page_with_nine")) }
                     it("should have size equals to 9") { expect(urls!!.size).toEqual(9) }
                     it("should return a images urls") {
                         for (i in PAGE_WITH_NINE_RESULT.indices) {
