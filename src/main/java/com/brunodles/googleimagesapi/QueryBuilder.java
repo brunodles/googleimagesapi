@@ -1,8 +1,14 @@
 package com.brunodles.googleimagesapi;
 
+import java.util.List;
+
 public interface QueryBuilder {
 
     QueryBuilder size(int width, int height);
 
-    String build(String query);
+    QueryBuilder query(String query);
+
+    List<String> findUrlsOnPage();
+
+    String randomImageFromPage();
 }

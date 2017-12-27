@@ -13,19 +13,19 @@ public final class ImagesApi {
     private ImagesApi() {
     }
 
-    public static QueryBuilder builder() {
-        return new QueryBuilderImpl();
+    public static QueryBuilder builder(PageFetcher pageFetcher) {
+        return new QueryBuilderImpl(pageFetcher);
     }
 
-    public static List<String> findUrls(String page) {
+    static List<String> findUrlsOnPage(String page) {
         Matcher matcher = URL_PATTERN.matcher(page);
         ArrayList<String> list = new ArrayList<String>();
         while (matcher.find()) list.add(matcher.group(1));
         return list;
     }
 
-    public static String random(String page) {
-        List<String> urls = findUrls(page);
+    static String randomImageFromPage(String page) {
+        List<String> urls = findUrlsOnPage(page);
         int i = new Random().nextInt(urls.size());
         return urls.get(i);
     }
