@@ -8,7 +8,7 @@ public interface QueryBuilder {
 
     QueryBuilder query(String query);
 
-    List<String> findUrlsOnPage();
+    List<String> listImageUrls();
 
-    String randomImageFromPage();
+    String randomImage();
 }

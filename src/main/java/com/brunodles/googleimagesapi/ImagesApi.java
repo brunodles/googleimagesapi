@@ -13,7 +13,7 @@ public final class ImagesApi {
     private ImagesApi() {
     }
 
-    public static QueryBuilder builder(PageFetcher pageFetcher) {
+    public static QueryBuilder queryBuilder(PageFetcher pageFetcher) {
         return new QueryBuilderImpl(pageFetcher);
     }
 

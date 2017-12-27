@@ -38,12 +38,12 @@ class QueryBuilderImpl implements QueryBuilder {
     }
 
     @Override
-    public List<String> findUrlsOnPage() {
+    public List<String> listImageUrls() {
         return ImagesApi.findUrlsOnPage(pageFetcher.fetchPage(build()));
     }
 
     @Override
-    public String randomImageFromPage() {
+    public String randomImage() {
         return ImagesApi.randomImageFromPage(pageFetcher.fetchPage(build()));
     }
 
