@@ -1,6 +1,6 @@
 buildscript {
 
-    ext.kotlin_ver = '1.0.6'
+    ext.kotlin_ver = '1.2.10'
 
     repositories {
         jcenter()
@@ -37,7 +37,16 @@ dependencies {
     testCompile 'com.mscharhag.oleaster:oleaster-matcher:0.1.2'
     testCompile 'com.mscharhag.oleaster:oleaster-runner:0.1.2'
     testCompile 'com.brunodles:oleaster-suiterunner:0.1.1'
+
+    testCompile "org.mockito:mockito-core:2.+"
 }
+
+test {
+    reports {
+        html.enabled = true
+    }
+}
+
 
 ext.scripter = [
         'gradle/scripter.gradle': 'https://raw.githubusercontent.com/brunodles/GradleHelpers/master/scripter/scripter.gradle',
