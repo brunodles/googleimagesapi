@@ -11,7 +11,7 @@ class QueryBuilderImpl implements QueryBuilder {
     private StringBuilder url = new StringBuilder();
     private String query;
 
-    public QueryBuilderImpl(PageFetcher pageFetcher) {
+    QueryBuilderImpl(PageFetcher pageFetcher) {
         this.pageFetcher = pageFetcher;
         url.append(BASE_URL);
     }
@@ -38,13 +38,8 @@ class QueryBuilderImpl implements QueryBuilder {
     }
 
     @Override
-    public List<String> listImageUrls() {
+    public QueryList<String> listImageUrls() {
         return ImagesApi.findUrlsOnPage(pageFetcher.fetchPage(build()));
-    }
-
-    @Override
-    public String randomImage() {
-        return ImagesApi.randomImageFromPage(pageFetcher.fetchPage(build()));
     }
 
     private String encode(String query) {
