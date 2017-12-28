@@ -57,7 +57,7 @@ apply from: rootProject.file("gradle/scripter.gradle")
 def gitPath = "github.com/brunodles/googleimagesapi"
 ext.publishing = [
         group          : "com.brunodles",
-        version        : '1.0.0',
+        version        : '2.0.0',
         repo           : "TempRepo",
         name           : "Google Images Api",
         artifact       : "googleimagesapi",
