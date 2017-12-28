@@ -5,19 +5,19 @@ import com.brunodles.oleaster.suiterunner.OleasterSuiteRunner
 import com.mscharhag.oleaster.matcher.Matchers.expect
 import com.mscharhag.oleaster.runner.StaticRunnerSupport.*
 import org.junit.runner.RunWith
+import org.mockito.Mockito
 
 @RunWith(OleasterSuiteRunner::class)
 class ImagesApiTest {
 
-    private var urls: List<String>? = null
-
     init {
         describe("Given a ImageApi") {
-            describe(".findUrlsOnPage") {
+            var urls: List<String>? = null
+            describe(".listImageUrls") {
                 describe("when the page have one image") {
                     beforeEach { urls = ImagesApi.findUrlsOnPage(ResourceHelper.getFileAsString("page_with_one")) }
                     it("should have size equals to 1") { expect(urls!!.size).toEqual(1) }
-                    it("should return a image url") { expect(urls!![0]).toEqual("http://data.whicdn.com/images/10344805/black-hair-emo-emo-girl-girl-julie-elizabeth-long-hair-Favim.com-58218_large.jpg") }
+                    it("should return a image url") { expect(urls!![0]).toEqual(PAGE_WITH_ONE_RESULT) }
                 }
                 describe("when the page have nine images") {
                     beforeEach { urls = ImagesApi.findUrlsOnPage(ResourceHelper.getFileAsString("page_with_nine")) }
@@ -29,10 +29,24 @@ class ImagesApiTest {
                     }
                 }
             }
+            describe(".queryBuilder") {
+                val pageFetcher = Mockito.mock(PageFetcher::class.java)
+                describe("when search for a anime name") {
+                    beforeEach {
+                        Mockito.`when`(pageFetcher.fetchPage(Mockito.anyString())).thenReturn(ResourceHelper.getFileAsString("search_chuunibyou"))
+                    }
+                    it("should return the correct list") {
+                        val first = ImagesApi.queryBuilder(pageFetcher).query("Chuunibyou").listImageUrls().first()
+                        expect(first).toEqual("https://www.animeunited.com.br/wp-content/uploads/2017/10/Chuunibyou-Demo-Koi-ga-Shitai-chuunibyou-demo-koi-ga-shitai-34840480-1280-720.jpg")
+                    }
+                }
+            }
         }
     }
 
     companion object {
+
+        val PAGE_WITH_ONE_RESULT = "http://data.whicdn.com/images/10344805/black-hair-emo-emo-girl-girl-julie-elizabeth-long-hair-Favim.com-58218_large.jpg"
 
         val PAGE_WITH_NINE_RESULT = arrayOf(
                 "http://soopermag.com/wp-content/uploads/2013/07/black-emo-girl-with-fringe.jpg",
