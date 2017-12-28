@@ -2,7 +2,6 @@ package com.brunodles.googleimagesapi;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.List;
 
 class QueryBuilderImpl implements QueryBuilder {
 
