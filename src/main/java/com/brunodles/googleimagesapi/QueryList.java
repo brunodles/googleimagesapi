@@ -12,7 +12,7 @@ public class QueryList<T> extends ArrayList<T> {
 
     /**
      * Simple access to the first item on the list
-     * <p/>
+     * <p>
      * May throws {@link IndexOutOfBoundsException}
      *
      * @return the first item on the list
@@ -23,7 +23,7 @@ public class QueryList<T> extends ArrayList<T> {
 
     /**
      * Simple access to a random item on the list
-     * <p/>
+     * <p>
      * May throws {@link IndexOutOfBoundsException}
      *
      * @return a random item from the list
