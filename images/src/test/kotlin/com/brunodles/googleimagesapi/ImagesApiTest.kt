@@ -1,13 +1,13 @@
 package com.brunodles.googleimagesapi
 
 import ResourceHelper
-import com.brunodles.oleaster.suiterunner.OleasterSuiteRunner
-import com.mscharhag.oleaster.matcher.Matchers.expect
-import com.mscharhag.oleaster.runner.StaticRunnerSupport.*
+import com.greghaskins.spectrum.Spectrum
+import com.greghaskins.spectrum.Spectrum.*
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.runner.RunWith
 import org.mockito.Mockito
 
-@RunWith(OleasterSuiteRunner::class)
+@RunWith(Spectrum::class)
 class ImagesApiTest {
 
     init {
@@ -16,15 +16,15 @@ class ImagesApiTest {
             describe(".listImageUrls") {
                 describe("when the page have one image") {
                     beforeEach { urls = ImagesApi.findUrlsOnPage(ResourceHelper.getFileAsString("page_with_one")) }
-                    it("should have size equals to 1") { expect(urls!!.size).toEqual(1) }
-                    it("should return a image url") { expect(urls!![0]).toEqual(PAGE_WITH_ONE_RESULT) }
+                    it("should have size equals to 1") { assertThat(urls!!.size).isEqualTo(1) }
+                    it("should return a image url") { assertThat(urls!![0]).isEqualTo(PAGE_WITH_ONE_RESULT) }
                 }
                 describe("when the page have nine images") {
                     beforeEach { urls = ImagesApi.findUrlsOnPage(ResourceHelper.getFileAsString("page_with_nine")) }
-                    it("should have size equals to 9") { expect(urls!!.size).toEqual(9) }
+                    it("should have size equals to 9") { assertThat(urls!!.size).isEqualTo(9) }
                     it("should return a images urls") {
                         for (i in PAGE_WITH_NINE_RESULT.indices) {
-                            expect(urls!![i]).toEqual(PAGE_WITH_NINE_RESULT[i])
+                            assertThat(urls!![i]).isEqualTo(PAGE_WITH_NINE_RESULT[i])
                         }
                     }
                 }
@@ -37,7 +37,7 @@ class ImagesApiTest {
                     }
                     it("should return the correct list") {
                         val first = ImagesApi.queryBuilder(pageFetcher).query("Chuunibyou").listImageUrls().first()
-                        expect(first).toEqual("https://www.animeunited.com.br/wp-content/uploads/2017/10/Chuunibyou-Demo-Koi-ga-Shitai-chuunibyou-demo-koi-ga-shitai-34840480-1280-720.jpg")
+                        assertThat(first).isEqualTo("https://www.animeunited.com.br/wp-content/uploads/2017/10/Chuunibyou-Demo-Koi-ga-Shitai-chuunibyou-demo-koi-ga-shitai-34840480-1280-720.jpg")
                     }
                 }
             }
@@ -60,5 +60,4 @@ class ImagesApiTest {
                 "http://www.tumblr18.com/t18/2013/10/Scary-but-lovely-emo-girl.jpg"
         )
     }
-
 }

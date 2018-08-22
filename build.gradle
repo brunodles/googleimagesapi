@@ -1,6 +1,6 @@
 buildscript {
 
-    ext.kotlin_ver = '1.2.10'
+    ext.kotlin_ver = '1.2.51'
 
     repositories {
         jcenter()
@@ -13,49 +13,14 @@ buildscript {
     }
 }
 
-apply plugin: 'java'
-apply plugin: "kotlin"
-
-sourceCompatibility = 1.6
-targetCompatibility = 1.6
-
-repositories {
-    jcenter()
-    mavenCentral()
-}
-
-dependencies {
-
-    compile 'com.squareup.okhttp3:okhttp:3.3.1'
-
-    testCompile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_ver"
-    testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_ver"
-    testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_ver"
-
-    testCompile group: 'junit', name: 'junit', version: '4.11'
-
-    testCompile 'com.mscharhag.oleaster:oleaster-matcher:0.1.2'
-    testCompile 'com.mscharhag.oleaster:oleaster-runner:0.1.2'
-    testCompile 'com.brunodles:oleaster-suiterunner:0.1.1'
-
-    testCompile "org.mockito:mockito-core:2.+"
-}
-
-test {
-    reports {
-        html.enabled = true
+allprojects {
+    repositories {
+        jcenter()
     }
 }
 
-
-ext.scripter = [
-        'gradle/scripter.gradle': 'https://raw.githubusercontent.com/brunodles/GradleHelpers/master/scripter/scripter.gradle',
-        'gradle/publish.gradle' : 'https://raw.githubusercontent.com/brunodles/GradleHelpers/master/publish/single.gradle'
-]
-apply from: rootProject.file("gradle/scripter.gradle")
-
 def gitPath = "github.com/brunodles/googleimagesapi"
-ext.publishing = [
+ext.publishingRoot = [
         group          : "com.brunodles",
         version        : '2.0.0',
         repo           : "TempRepo",
@@ -65,7 +30,7 @@ ext.publishing = [
         site           : "https://$gitPath",
         issueTrackerUrl: "https://$gitPath/issues",
         tag            : 'git rev-parse --abbrev-ref HEAD'.execute().text.trim(),
-        override       : true,
+        override       : false,
         desc           : "A simple project to grab images from google images search.",
         license        : [
                 short: "mit",
@@ -77,4 +42,3 @@ ext.publishing = [
                 email: "dlimaun@gmail.com"
         ]
 ]
-apply from: rootProject.file("gradle/publish.gradle")

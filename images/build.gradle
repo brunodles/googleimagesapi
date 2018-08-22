@@ -1,0 +1,38 @@
+apply plugin: 'java'
+apply plugin: "kotlin"
+
+sourceCompatibility = 1.6
+targetCompatibility = 1.6
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+
+    compile 'com.squareup.okhttp3:okhttp:3.3.1'
+
+    testCompile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_ver"
+    testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_ver"
+    testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_ver"
+
+    testImplementation 'junit:junit:4.11'
+    testImplementation 'com.greghaskins:spectrum:1.1.1'
+    testImplementation 'org.mockito:mockito-core:2.8.9'
+    testImplementation 'org.assertj:assertj-core:3.11.0'
+}
+
+test {
+    reports {
+        html.enabled = true
+    }
+}
+
+ext.publishing = rootProject.publishingRoot.clone() + [
+        version : '2.0.0',
+        repo    : "TempRepo",
+        name    : "Google Images Api",
+        artifact: "googleimagesapi",
+]
+apply from: rootProject.file("gradle/publish.gradle")
