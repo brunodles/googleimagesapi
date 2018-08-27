@@ -1,2 +1,3 @@
 rootProject.name = 'googlesearchapi'
 include "images"
+include "search"
