@@ -5,9 +5,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Image search Api.<p>
- * This will help to seach for images using google search api.<p>
- * Use {@link #queryBuilder(PageFetcher)} to start a search.
+ * Image search Api.
+ * <p>This will help to search for images using google search api.
+ * <p>Use {@link #queryBuilder(PageFetcher)} to start a search.
  */
 public final class ImagesApi {
 
