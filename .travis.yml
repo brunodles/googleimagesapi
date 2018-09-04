@@ -13,12 +13,12 @@ before_install:
 
 script: ./gradlew test --info
 
-deploy:
-  skip_cleanup: true
-  provider: script
-  script: ./gradlew install bintrayUpload
-  on:
-    branch: master
+#deploy:
+#  skip_cleanup: true
+#  provider: script
+#  script: ./gradlew install bintrayUpload
+#  on:
+#    branch: master
 
 notifications:
   email: false
